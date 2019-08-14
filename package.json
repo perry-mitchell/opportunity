@@ -1,0 +1,26 @@
+{
+  "name": "opportunity",
+  "version": "0.0.0",
+  "description": "Action execution control via requirements and conditions",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "npm run test:specs",
+    "test:specs": "nyc mocha -r test/index.js 'test/specs/**/*.spec.js'"
+  },
+  "keywords": [
+    "opportunity",
+    "action",
+    "control",
+    "step",
+    "condition",
+    "requirement"
+  ],
+  "author": "Perry Mitchell <perry@perrymitchell.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.4.1"
+  }
+}

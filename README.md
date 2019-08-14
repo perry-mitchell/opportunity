@@ -1,5 +1,5 @@
 # Opportunity
-> Action execution control via requirements and conditions - _Opportunities_
+> Action execution control using conditional checks - _Opportunities_
 
 ## About
 
@@ -31,3 +31,5 @@ function someTask() {
         .then(finalise);
 }
 ```
+
+Here the Promise chain returned by `someTask()` is halted while the created action is inactive. Once activated, the promise will resolve and the chain will continue. The action depends on two conditions created by `whenTruthy` and `whileFalsy`. These are **helpers**, and they check functions or promises for their return value. Once a value is returned (either synchronously or asynchronously), the state of the condition is updated. If _all_ conditions are in the `true` (active) state, the action will be triggered.

@@ -1,6 +1,6 @@
 {
   "name": "opportunity",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Action execution control via requirements and conditions",
   "main": "source/index.js",
   "scripts": {

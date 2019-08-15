@@ -4,9 +4,13 @@
  */
 
 /**
+ * @typedef {Promise} Action
+ */
+
+/**
  * Create a new action
  * @param {Condition[]|CreateActionOptions=} opts Options for the action
- * @returns {Promise}
+ * @returns {Action} Prepared action, which is basically an extended Promise
  * @example
  *  createAction([
  *    whenTruthy(someFunc),
@@ -15,10 +19,12 @@
  */
 function createAction(opts = {}) {
     const { conditions = [] } = Array.isArray(opts) ? { conditions: opts } : opts;
+    let validated = false;
     const promise = new Promise(resolve => {
         const check = () => {
             if (conditions.every(cond => cond.isActivated())) {
                 resolve();
+                validated = true;
                 conditions.forEach(condition => {
                     condition.cleanup();
                 });
@@ -27,6 +33,14 @@ function createAction(opts = {}) {
         conditions.forEach(condition => {
             condition.onActivated(check);
         });
+    });
+    Object.assign(promise, {
+        /**
+         * Check if the action is validated
+         * @returns {Boolean}
+         * @memberof Action
+         */
+        isValidated: () => validated
     });
     return promise;
 }

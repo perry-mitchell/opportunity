@@ -17,6 +17,8 @@ Helper methods are provided to make checking states easier. Of course a conditio
 
 ![Helper functions check state asynchronously](diagram-opportunity-conditions.jpg)
 
+## Usage
+
 Let's look at a basic example:
 
 ```javascript

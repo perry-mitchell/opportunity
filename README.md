@@ -1,7 +1,7 @@
 # Opportunity
 > Action execution control using conditional checks - _Opportunities_
 
-[![Build Status](https://travis-ci.org/perry-mitchell/opportunity.svg?branch=master)](https://travis-ci.org/perry-mitchell/opportunity)
+[![Build Status](https://travis-ci.org/perry-mitchell/opportunity.svg?branch=master)](https://travis-ci.org/perry-mitchell/opportunity) [![npm version](https://badge.fury.io/js/opportunity.svg)](https://www.npmjs.com/package/opportunity)
 
 ## About
 

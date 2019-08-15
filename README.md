@@ -1,6 +1,8 @@
 # Opportunity
 > Action execution control using conditional checks - _Opportunities_
 
+[![Build Status](https://travis-ci.org/perry-mitchell/opportunity.svg?branch=master)](https://travis-ci.org/perry-mitchell/opportunity)
+
 ## About
 
 **Opportunity** provides an asynchronous toolkit with which to manage promises and the actions they're ultimately responsible for executing. The **actions** and **conditions** provided by this library allow for the creation of complex asynchronous "stops", which are only triggered (allowing a promise chain or asynchronous procedure to continue) when all conditions for an action (opportunity) are validated (truthy).

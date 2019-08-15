@@ -59,9 +59,21 @@ function createAction(opts = {}) {
 function createEmitter(opts = {}) {
     const { conditions = [] } = Array.isArray(opts) ? { conditions: opts } : opts;
     const onActiveCallbacks = [];
+    const onInactiveCallbacks = [];
+    let isActive = false;
     const check = () => {
         if (conditions.every(cond => cond.isActivated())) {
-            onActiveCallbacks.forEach(cb => {
+            if (!isActive) {
+                isActive = true;
+                onActiveCallbacks.forEach(cb => {
+                    try {
+                        cb();
+                    } catch (err) {}
+                });
+            }
+        } else if (isActive) {
+            isActive = false;
+            onInactiveCallbacks.forEach(cb => {
                 try {
                     cb();
                 } catch (err) {}
@@ -70,6 +82,7 @@ function createEmitter(opts = {}) {
     };
     conditions.forEach(condition => {
         condition.onActivated(check);
+        condition.onDeactivated(check);
     });
     return {
         /**
@@ -92,6 +105,21 @@ function createEmitter(opts = {}) {
                 const index = onActiveCallbacks.indexOf(cb);
                 if (index >= 0) {
                     onActiveCallbacks.splice(index, 1);
+                }
+            };
+        },
+        /**
+         * Attach a callback that fires when at least one condition becomes
+         * inactive
+         * @param {Function} cb Callback to attach
+         * @memberof Emitter
+         */
+        onInactive: cb => {
+            onInactiveCallbacks.push(cb);
+            return () => {
+                const index = onInactiveCallbacks.indexOf(cb);
+                if (index >= 0) {
+                    onInactiveCallbacks.splice(index, 1);
                 }
             };
         }

@@ -16,7 +16,7 @@ describe("condition", function() {
             expectCondition(cond);
         });
 
-        describe("created condition", function() {
+        describe("instance", function() {
             beforeEach(function() {
                 this.condition = createCondition();
             });
@@ -60,7 +60,7 @@ describe("condition", function() {
             cond.cleanup();
         });
 
-        describe("created condition", function() {
+        describe("instance", function() {
             it("reacts correctly to a callback method (falsy)", function(done) {
                 const cond = createReaction(() => false, { delay: 50 });
                 const spy = sinon.spy();

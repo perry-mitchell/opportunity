@@ -9,15 +9,15 @@
 
 Take a promise chain with a complex step that needs several dependencies to be in the correct state:
 
-![Promise chain with asynchronous dependencies](diagram-opportunity-blocked.jpg)
+![Promise chain with asynchronous dependencies](https://github.com/perry-mitchell/opportunity/blob/master/diagram-opportunity-blocked.jpg?raw=true)
 
 **Opportunity** provides a simple API for checking dependencies (functions, values etc.) to ensure they're all correct before continuing. Once they're all valid (at one point in time, as they're continuously checked), the action can execute:
 
-![Promise resolving based upon valid checks](diagram-opportunity-accepted.jpg)
+![Promise resolving based upon valid checks](https://github.com/perry-mitchell/opportunity/blob/master/diagram-opportunity-accepted.jpg?raw=true)
 
 Helper methods are provided to make checking states easier. Of course a condition can be controlled and triggered manually quite easily, but sometimes you need to check the result of an asynchronous function, and this is where the helper functions come in handy:
 
-![Helper functions check state asynchronously](diagram-opportunity-conditions.jpg)
+![Helper functions check state asynchronously](https://github.com/perry-mitchell/opportunity/blob/master/diagram-opportunity-conditions.jpg?raw=true)
 
 ## Usage
 

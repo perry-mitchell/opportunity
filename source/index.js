@@ -1,4 +1,4 @@
-const { createAction } = require("./action.js");
+const { createAction, createEmitter } = require("./action.js");
 const {
     createCondition,
     createReaction,
@@ -12,6 +12,7 @@ const {
 module.exports = {
     createAction,
     createCondition,
+    createEmitter,
     createReaction,
     whenFalsy,
     whenFinished,

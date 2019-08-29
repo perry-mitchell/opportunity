@@ -37,3 +37,17 @@ function someTask() {
 ```
 
 Here the Promise chain returned by `someTask()` is halted while the created action is inactive. Once activated, the promise will resolve and the chain will continue. The action depends on two conditions created by `whenTruthy` and `whileFalsy`. These are **helpers**, and they check functions or promises for their return value. Once a value is returned (either synchronously or asynchronously), the state of the condition is updated. If _all_ conditions are in the `true` (active) state, the action will be triggered.
+
+While **actions** block processing until some state is achieved, **emitters** can emit events when the desired state is reached or left. Emitters can be used to trigger other actions repetitively:
+
+```javascript
+const { createEmitter, whenTruthy, whileTruthy } = require("opportunity");
+const { containerVisible, playVideo, pauseVideo, videoReady } = require("./some-library.js");
+
+const emitter = createEmitter([
+    whileTruthy(containerVisible),
+    whenTruthy(videoReady)
+]);
+emitter.onActive(playVideo);
+emitter.onInactive(pauseVideo);
+```
